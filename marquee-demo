@@ -70,7 +70,7 @@
 		</ul>
 	</div>
 <script src="jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>		
-<script src="ongoingSlide.jq.js" type="text/javascript" charset="utf-8"></script>		
+<script src="marquee.jq.js" type="text/javascript" charset="utf-8"></script>		
 <script type="text/javascript">		
 $(function(){
 		
