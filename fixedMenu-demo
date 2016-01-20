@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>定位菜单</title>
+		<style>
+			ul,li,body,html,p,h2{padding: 0; margin: 0;}
+			.fixedMenu{position: fixed; right: 10px; top: 50%; height: 30px; line-height: 30px;}
+			.fixedMenu li{list-style: none; margin-bottom:10px; cursor: pointer; background: #eee; text-align: center; padding: 0 10px; border-radius: 5px;}
+			.fixedMenu .on{ background: #b31c27; color: #fff;}
+			.container{width: 1100px; margin: 0 auto;}
+			.hd{height: 200px;}
+			.ct{height: 500px; background: #f9f9f9; margin-bottom: 10px;}
+			.h600{height: 600px;}
+			.h950{height: 950px;}
+		</style>
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="hd"></div>
+			<div class="row">
+				<h2>标题一</h2>
+				<div class="ct">内容</div>
+			</div>
+			<div class="row">
+				<h2>标题二</h2>
+				<div class="ct h950">内容</div>
+			</div>
+			<div class="row">
+				<h2>标题三</h2>
+				<div class="ct h600">内容</div>
+			</div>
+			<div class="ft h600">底部底部</div>
+		</div>
+		<ul class="fixedMenu">
+			<li>标题一</li>
+			<li>标题二</li>
+			<li>标题三</li>
+		</ul>
+
+		<script src="jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="fixedMenu.jq.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				$(".fixedMenu").fixedMenu(
+					{
+						offsetH:30,
+						autoFirstChoosed:false
+					
+					}
+				);
+					
+			})
+		</script>
+	</body>
+
+</html>
