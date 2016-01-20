@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>无缝滚动</title>
+		<style>
+		ul,li,body,html,p{padding: 0; margin: 0;}
+			.sld-imgs{position: relative; width: 600px; height: 200px; overflow: hidden; margin-bottom: 30px;}
+			.sld-imgs .slideBd{position:absolute;font-size: 0;}
+			.sld-imgs .slideBd li{width: 600px; height: 200px; display: inline-block; *display: inline-block; *zoom:1; text-align: center; color: #fff; line-height: 200px; font-size: 18px;}
+			.sld-imgs .slideBd li:nth-child(3n+1){background: #00A1E1;}
+			.sld-imgs .slideBd li:nth-child(3n+2){background: #009944;}
+			.sld-imgs .slideBd li:nth-child(3n){background: #9AD0E8;}
+			.sld-imgs a{color: #fff; text-decoration: none; display: block; height: 200px;}
+			
+			.sld-word-level{height: 30px; width: 600px; position: relative; line-height: 30px; overflow: hidden; margin-bottom: 50px; background: #F0FF00;}
+			.sld-word-level p{position: absolute;}
+			.sld-word-level a{display: inline-block; margin-right: 3em;}
+		
+			.sld-word-vertical{width: 300px; height: 60px; position: relative; overflow: hidden; margin-bottom: 50px; background: #F2FBFF;}
+			.sld-word-vertical ul{position: absolute; line-height: 30px;}
+			
+		</style>
+	</head>
+	<body>
+	<div class="sld-imgs sld-left">		
+		<ul class="slideBd">
+				<li><a href="">1</a></li>
+				<li><a href="">2</a></li>
+				<li><a href="">3</a></li>
+		</ul>		
+	</div>	
+	<div class="sld-imgs sld-right">		
+		<ul class="slideBd">
+				<li><a href="">1</a></li>
+				<li><a href="">2</a></li>
+				<li><a href="">3</a></li>
+		</ul>		
+	</div>	
+	<div class="sld-word-level sld-word-left">
+		<p>
+			<a href="">滚动公滚动公告文字滚动公告文字告文字1</a>
+			<a href="">滚动公告文字2</a>
+			<a href="">滚动滚动公告文字公告文字3</a>
+			<a href="">滚动公告文字4</a>
+		</p>
+	</div>
+	<div class="sld-word-level sld-word-right">
+		<p>
+			<a href="">滚动公滚动公告文字滚动公告文字告文字1</a>
+			<a href="">滚动公告文字2</a>
+			<a href="">滚动滚动公告文字公告文字3</a>
+			<a href="">滚动公告文字4</a>
+		</p>
+	</div>
+	<div class="sld-word-vertical sld-word-up">
+		<ul>
+			<li>滚动公滚动1</li>
+			<li>滚动公告文字2</li>
+			<li>滚动滚动公告公文字公告文字3</li>
+			<li>滚动公告文字4</li>
+		</ul>
+	</div>
+	<div class="sld-word-vertical sld-word-down">
+		<ul>
+			<li>滚动公滚动公告1</li>
+			<li>滚动公告文字2</li>
+			<li>滚动滚动公告文字公告文字3</li>
+			<li>滚动公告文字4</li>
+		</ul>
+	</div>
+<script src="jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>		
+<script src="ongoingSlide.jq.js" type="text/javascript" charset="utf-8"></script>		
+<script type="text/javascript">		
+$(function(){
+		
+		$(".sld-left").ongoingSlide(
+			{direction:"left"}
+		);
+		$(".sld-right").ongoingSlide();
+		$(".sld-word-left").ongoingSlide(
+			{
+				slide:"p", 
+				child:"a",
+				direction:"left"
+			}
+		);
+		$(".sld-word-right").ongoingSlide(
+			{
+				slide:"p", 
+				child:"a"
+			}
+		);
+		$(".sld-word-up").ongoingSlide(
+			{
+				slide:"ul", 
+				direction:"up",
+				speed:30
+			}
+		);
+		$(".sld-word-down").ongoingSlide(
+			{
+				slide:"ul", 
+				direction:"down",
+				speed:30
+			}
+		);
+})
+		</script>
+	</body>
+</html>
