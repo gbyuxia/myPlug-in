@@ -5,14 +5,14 @@
 		<title>定时无缝滚动</title>
 		<style>
 		ul,li,body,html,p{padding: 0; margin: 0;}
-			.sld-imgs{position: relative; width: 600px; height: 200px; overflow: hidden; margin-bottom: 30px;}
-			.sld-imgs .slideBd{position:absolute;font-size: 0;}
-			.sld-imgs .slideBd li{width: 600px; height: 200px; display: inline-block; *display: inline-block; *zoom:1; text-align: center; color: #fff; line-height: 200px; font-size: 18px;}
+			.sld-imgs{position: relative; width: 100%; height: 200px; overflow: hidden; margin-bottom: 30px;}
+			.sld-imgs .slideBd{position:absolute;height: 200px; top: 0; width: 100%;}
+			.sld-imgs .slideBd li{width: 100%; height: 200px;float:left;background: #9AD0E8; text-align: center; color: #fff; line-height: 200px; font-size: 18px;}
 			.sld-imgs .slideBd li:nth-child(3n+1){background: #00A1E1;}
 			.sld-imgs .slideBd li:nth-child(3n+2){background: #009944;}
-			.sld-imgs .slideBd li:nth-child(3n){background: #9AD0E8;}
+			.sld-imgs .slideBd li:nth-child(3n){}
 			.sld-imgs a{color: #fff; text-decoration: none; display: block; height: 200px;}
-			.switcher{position: absolute; left: 0; z-index: 20; line-height: 10px; width: 600px; text-align: center; height: 10px; bottom: 20px;}
+			.switcher{position: absolute; left: 0; z-index: 20; line-height: 10px; width: 100%; text-align: center; height: 10px; bottom: 20px;}
 			.switcher em{display: inline-block; width: 10px; height: 10px; margin: 0 5px; background: #fff;}
 			.switcher .on{background: red;}
 			
@@ -88,9 +88,9 @@
 $(function(){
 		
 		$(".sld-left").timerSlide(
-			{direction:"left"}
+			{direction:"left",fullWidth:true}
 		);
-		$(".sld-right").timerSlide();
+		$(".sld-right").timerSlide({fullWidth:true});
 		$(".sld-word-left").timerSlide(
 			{
 				slide:"p", 
