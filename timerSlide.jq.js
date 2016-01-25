@@ -7,6 +7,7 @@
 			speed:300,
 			direction:"right",
 			auto:true,
+			fullWidth:false,
 			dots:".switcher em",
 			activeClass:"on"
 		} 		
@@ -18,26 +19,51 @@
 				speed = options.speed,
 				direction = options.direction,
 				curClass = options.activeClass,
-				$dots = $wrapper.find(options.dots);
+				$dots = $wrapper.find(options.dots),
 				interval = options.interval;
 			if ($wrapper.length<1 ||$scroll.length<1 ||$child.length<1 ){
 				return false;
 			}
-			var l = $child.size(),h=$child.height(),w=$child.width(), step, thisNo=0,startScroll,scrollFun;
+			var l = $child.size(),h=$wrapper.height(),w=$child.width(), step, thisNo=0,startScroll,scrollFun;
 			var curIndex=0;			
 			$child.eq(0).clone().appendTo($scroll);
-			if (direction == 'left' || direction == 'right'){
-				$scroll.width(w*(l+1));	
-				step = w;
-			}else if(direction == 'down'){
-				direction = 'bottom';
-				step = h;
-			}else{
-				direction = 'top';
-				step = h;
+			
+			
+			var resetScroll = function(){
+				if(options.fullWidth){
+					$wrapper.width(document.body.clientWidth);
+					w=$wrapper.width();
+					$scroll.find(options.child).width(w);
+				}
+				
+				if (direction == 'left' || direction == 'right'){
+					$scroll.width(w*(l+1));	
+					step = w;
+				}else if(direction == 'down'){
+					direction = 'bottom';
+					step = h;
+				}else{
+					direction = 'top';
+					step = h;
+				}
+				$scroll.css(direction,0);
 			}
-			$scroll.css(direction,0);
-			 
+			resetScroll();
+			
+			var resizeTimer;
+			$(window).resize(function(){
+				if (resizeTimer) {
+		            clearTimeout(resizeTimer)
+		        }
+		        resizeTimer = setTimeout(function(){
+		            if(options.fullWidth){					
+						resetScroll();					
+					}
+		        }, 200);
+			});
+			
+			
+			
 			scrollFun = function(n){
 				n--;				
 				if (n+l <=-1){
